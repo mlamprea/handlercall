@@ -2,9 +2,19 @@ package com.almundo.poc.handlercall;
 
 import java.util.concurrent.Executors;
 
+/**
+ * Fabrica de despachadores donde la division de carga entre workers es  homogenea o uniforme*
+ * @author Milton Lamprea
+ */
+
 public class UniformDispatcherFactory extends DispatcherFactory {
     @Override
 
+/**
+ * @param capacity capacidad de llamadas concurrentes para procesar
+ *  Construye un despachador dividiendo la capacidad todal de llamadas concurrentes entre los tres tipos de empleado: operador, supervisor y director.
+ *
+ */
     public Dispatcher createDisptacher(int capacity) {
         int operators = 0;
         int supervisors = 0;
@@ -36,8 +46,8 @@ public class UniformDispatcherFactory extends DispatcherFactory {
         Dispatcher supervisor = new Supervisor();
         Dispatcher manager = new Manager();
 
-        /*
-        define la capacidad de procesamiento para cada empleado
+        /**
+         define la capacidad de procesamiento para cada empleado
          */
         operator.setId("Operator");
         supervisor.setId("Supervisor");
@@ -47,8 +57,8 @@ public class UniformDispatcherFactory extends DispatcherFactory {
         supervisor.setExecutorService(Executors.newFixedThreadPool(supervisors));
         manager.setExecutorService(Executors.newFixedThreadPool(managers));
 
-        /*
-        define el orden de atencion de las llamadas
+        /**
+         define el orden de atencion de las llamadas
          */
         operator.setSuccesor(supervisor);
         supervisor.setSuccesor(manager);

@@ -3,6 +3,11 @@ package com.almundo.poc.handlercall;
 import java.util.concurrent.ExecutionException;
 import java.util.logging.Logger;
 
+
+/**
+ * Abstracción de empleado Director
+ * @author Milton Lamprea
+ */
 public class Manager extends Dispatcher {
     private static final Logger logger = Logger.getLogger(Manager.class.getName());
 

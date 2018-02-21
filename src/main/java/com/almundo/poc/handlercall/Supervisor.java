@@ -3,6 +3,10 @@ package com.almundo.poc.handlercall;
 import java.util.concurrent.ExecutionException;
 import java.util.logging.Logger;
 
+/**
+ * Abstracción de empleado Supervisor
+ * @author Milton Lamprea
+ */
 public class Supervisor extends Dispatcher {
     private static final Logger logger = Logger.getLogger(Supervisor.class.getName());
 

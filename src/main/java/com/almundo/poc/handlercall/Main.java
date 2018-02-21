@@ -2,6 +2,11 @@ package com.almundo.poc.handlercall;
 
 import java.util.logging.Logger;
 
+/**
+ * Clase que ilustra la principal funcionalidad requerida
+ * 10 llamadas concurrentes con una duración aleatoria de cada una entre 5 y 10 segundos
+ * @author Milton Lamprea
+ */
 public class Main {
     private static final Logger logger = Logger.getLogger(Main.class.getName());
 

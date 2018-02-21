@@ -1,18 +1,29 @@
 package com.almundo.poc.handlercall;
 
-import org.apache.logging.log4j.Level;
-
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.logging.Logger;
 
+/**
+ * Encargado de asignar el procesamiento de una llamadas al worker o empleado disponible.
+ *  @author Milton Lamprea
+ */
 public class Dispatcher {
 
     private Dispatcher succesor = null;
     private ExecutorService executorService;
     private String id;
     private static final Logger logger = Logger.getLogger(Class.class.getName());
+
+    /**
+     * Procesa la llamada si tiene empleados disponibles
+     * Cuando no tiene empleados disponibles delega el procesamiento a  un empleado sucesor
+     * La cantidad de empleados disponibles esta dado por el tamaño del pool de  Hilos de ExecutorService
+     * @param call
+     * @throws InterruptedException
+     * @throws ExecutionException
+     */
 
     public void dispatchCall(AbstractCall call) throws InterruptedException, ExecutionException {
         ThreadPoolExecutor pool = (ThreadPoolExecutor) executorService;
@@ -42,8 +53,18 @@ public class Dispatcher {
         }
     }
 
+    /**
+     *
+     * Metodos de encapsulamiento
+     *
+     */
+
     public void setSuccesor(Dispatcher succesor) {
         this.succesor = succesor;
+    }
+
+    public Dispatcher getSuccesor() {
+        return succesor;
     }
 
     public void setExecutorService(ExecutorService executorService) {
